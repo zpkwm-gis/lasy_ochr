@@ -1,6 +1,6 @@
-var json_LasyochronneOKZPKWM_2 = {
+var json_LasyochronneOKZPKWM_3 = {
 "type": "FeatureCollection",
-"name": "LasyochronneOKZPKWM_2",
+"name": "LasyochronneOKZPKWM_3",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "fid": "1", "OBSZAR": "Wąwóz Ostryszni", "FUNKCJA": "przyrodnicza i społeczna", "FUNKCJA - UZASADNIENIE": "Obszar proponowanego rezerwatu przyrody z trasą turystyczną odwiedzaną przez turystów", "GOSPODARKA": "modyfikacja", "GOSPODARKA - UZASADNIENIE": "Gospodarka zapewniająca właściwe warunki dla ochrony  cennych siedlisk przyrodniczych, chronionych gatunków oraz dostępu do lasów w miejscach licznie odwiedzanych przez turystów i mieszkańców", "UWAGI": "Obszar proponowanego rezerwatu przyrody", "PARK": "DPK", "a_i_num": "314003375", "adr_for": "03-14-1-07-408   -a   -00", "area_type": "D-STAN", "forest_fun": "OCHR", "sub_area": 2.52, "species_cd": "SO", "spec_age": "110" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 19.864219253419872, 50.312807474163833 ], [ 19.864180584100946, 50.312596344924636 ], [ 19.862868083511131, 50.312641539403458 ], [ 19.862945647651625, 50.312952690833889 ], [ 19.862980787603728, 50.31309331446429 ], [ 19.863323726480925, 50.314489446862012 ], [ 19.863335902248718, 50.314525612147584 ], [ 19.863587668178006, 50.315269817999109 ], [ 19.864630149733074, 50.315152133352441 ], [ 19.864492982859076, 50.314313244654748 ], [ 19.864219253419872, 50.312807474163833 ] ] ] } },
