@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="css/qgis2web.css">
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+	<link rel="stylesheet" href="css/Control.FullScreen.css" />    
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
         <style>
         html, body, #map {
@@ -37,6 +38,7 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet.wms.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+	<script src="js/Control.FullScreen.js"></script>   
         <script src="data/LasyochronneOKZPKWM_3.js"></script>
         <script src="data/Natura2000SOO_4.js"></script>
         <script src="data/Otulinyrezerwatwprzyrody_5.js"></script>
@@ -117,6 +119,12 @@
                 this._div.innerHTML = 'Zespół Parków Krajobrazowych Województwa Małopolskiego';
         };
         abstract.addTo(map);
+	
+		// create fullscreen control
+	var fsControl = L.control.fullscreen();
+	// add fullscreen control to the map
+	map.addControl(fsControl);	
+	
         var zoomControl = L.control.zoom({
             position: 'topleft'
         }).addTo(map);
