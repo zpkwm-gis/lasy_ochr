@@ -19,7 +19,7 @@
             margin: 0;
         }
         </style>
-        <title>Propozycja lasów  o funkcji przyrodniczej i społecznej</title>
+        <title>Propozycja wyznaczenia lasów  o funkcji przyrodniczej i społecznej</title>
     </head>
     <body>
         <div id="map">
@@ -38,8 +38,8 @@
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
         <script src="data/LasyochronneOKZPKWM_3.js"></script>
         <script src="data/Natura2000SOO_4.js"></script>
-        <script src="data/RP_otu_5.js"></script>
-        <script src="data/RP_6.js"></script>
+        <script src="data/Otulinyrezerwatwprzyrody_5.js"></script>
+        <script src="data/Rezerwatyprzyrody_6.js"></script>
         <script src="data/Parkikrajobrazowe_7.js"></script>
         <script>
         var highlightLayer;
@@ -59,7 +59,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[49.94270225137866,19.03744092198331],[50.499660263090995,20.3759790451617]]);
+        }).fitBounds([[49.99147470000195,19.374694228872524],[50.269987404637,20.04196135548641]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -98,7 +98,7 @@
             return this._div;
         };
         title.update = function () {
-            this._div.innerHTML = '<h2>Propozycja lasów  o funkcji przyrodniczej i społecznej</h2>';
+            this._div.innerHTML = '<h2>Propozycja wyznaczenia lasów  o funkcji przyrodniczej i społecznej</h2>';
         };
         title.addTo(map);
         var abstract = new L.Control({'position':'topleft'});
@@ -135,10 +135,10 @@
         });
         layer_OSMStandard_0;
         map.addLayer(layer_OSMStandard_0);
-        map.createPane('pane_WydzieleniapozaPGLLP_1');
-        map.getPane('pane_WydzieleniapozaPGLLP_1').style.zIndex = 401;
-        var layer_WydzieleniapozaPGLLP_1 = L.WMS.layer("https://mapserver.bdl.lasy.gov.pl/ArcGIS/services/WMS_BDL_kat_wlasnosci/MapServer/WMSServer", "0", {
-            pane: 'pane_WydzieleniapozaPGLLP_1',
+        map.createPane('pane_WMSBDLWydzieleniapozaPGLLP_1');
+        map.getPane('pane_WMSBDLWydzieleniapozaPGLLP_1').style.zIndex = 401;
+        var layer_WMSBDLWydzieleniapozaPGLLP_1 = L.WMS.layer("https://mapserver.bdl.lasy.gov.pl/ArcGIS/services/WMS_BDL_kat_wlasnosci/MapServer/WMSServer", "0", {
+            pane: 'pane_WMSBDLWydzieleniapozaPGLLP_1',
             format: 'image/png',
             uppercase: true,
             transparent: true,
@@ -149,10 +149,10 @@
             identify: false,
             attribution: '',
         });
-        map.createPane('pane_WydzieleniaPGLLP_2');
-        map.getPane('pane_WydzieleniaPGLLP_2').style.zIndex = 402;
-        var layer_WydzieleniaPGLLP_2 = L.WMS.layer("https://mapserver.bdl.lasy.gov.pl/ArcGIS/services/WMS_BDL_kat_wlasnosci/MapServer/WMSServer", "1", {
-            pane: 'pane_WydzieleniaPGLLP_2',
+        map.createPane('pane_WMSBDLWydzieleniaPGLLP_2');
+        map.getPane('pane_WMSBDLWydzieleniaPGLLP_2').style.zIndex = 402;
+        var layer_WMSBDLWydzieleniaPGLLP_2 = L.WMS.layer("https://mapserver.bdl.lasy.gov.pl/ArcGIS/services/WMS_BDL_kat_wlasnosci/MapServer/WMSServer", "1", {
+            pane: 'pane_WMSBDLWydzieleniaPGLLP_2',
             format: 'image/png',
             uppercase: true,
             transparent: true,
@@ -163,6 +163,7 @@
             identify: false,
             attribution: '',
         });
+        map.addLayer(layer_WMSBDLWydzieleniaPGLLP_2);
         function pop_LasyochronneOKZPKWM_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -294,7 +295,7 @@
             style: style_Natura2000SOO_4_0,
         });
         bounds_group.addLayer(layer_Natura2000SOO_4);
-        function pop_RP_otu_5(feature, layer) {
+        function pop_Otulinyrezerwatwprzyrody_5(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -318,9 +319,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_RP_otu_5_0() {
+        function style_Otulinyrezerwatwprzyrody_5_0() {
             return {
-                pane: 'pane_RP_otu_5',
+                pane: 'pane_Otulinyrezerwatwprzyrody_5',
                 opacity: 1,
                 color: 'rgba(196,108,240,1.0)',
                 dashArray: '',
@@ -333,21 +334,21 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_RP_otu_5');
-        map.getPane('pane_RP_otu_5').style.zIndex = 405;
-        map.getPane('pane_RP_otu_5').style['mix-blend-mode'] = 'normal';
-        var layer_RP_otu_5 = new L.geoJson(json_RP_otu_5, {
+        map.createPane('pane_Otulinyrezerwatwprzyrody_5');
+        map.getPane('pane_Otulinyrezerwatwprzyrody_5').style.zIndex = 405;
+        map.getPane('pane_Otulinyrezerwatwprzyrody_5').style['mix-blend-mode'] = 'normal';
+        var layer_Otulinyrezerwatwprzyrody_5 = new L.geoJson(json_Otulinyrezerwatwprzyrody_5, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_RP_otu_5',
-            layerName: 'layer_RP_otu_5',
-            pane: 'pane_RP_otu_5',
-            onEachFeature: pop_RP_otu_5,
-            style: style_RP_otu_5_0,
+            dataVar: 'json_Otulinyrezerwatwprzyrody_5',
+            layerName: 'layer_Otulinyrezerwatwprzyrody_5',
+            pane: 'pane_Otulinyrezerwatwprzyrody_5',
+            onEachFeature: pop_Otulinyrezerwatwprzyrody_5,
+            style: style_Otulinyrezerwatwprzyrody_5_0,
         });
-        bounds_group.addLayer(layer_RP_otu_5);
-        map.addLayer(layer_RP_otu_5);
-        function pop_RP_6(feature, layer) {
+        bounds_group.addLayer(layer_Otulinyrezerwatwprzyrody_5);
+        map.addLayer(layer_Otulinyrezerwatwprzyrody_5);
+        function pop_Rezerwatyprzyrody_6(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -371,9 +372,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_RP_6_0() {
+        function style_Rezerwatyprzyrody_6_0() {
             return {
-                pane: 'pane_RP_6',
+                pane: 'pane_Rezerwatyprzyrody_6',
                 opacity: 1,
                 color: 'rgba(85,0,127,1.0)',
                 dashArray: '',
@@ -386,20 +387,20 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_RP_6');
-        map.getPane('pane_RP_6').style.zIndex = 406;
-        map.getPane('pane_RP_6').style['mix-blend-mode'] = 'normal';
-        var layer_RP_6 = new L.geoJson(json_RP_6, {
+        map.createPane('pane_Rezerwatyprzyrody_6');
+        map.getPane('pane_Rezerwatyprzyrody_6').style.zIndex = 406;
+        map.getPane('pane_Rezerwatyprzyrody_6').style['mix-blend-mode'] = 'normal';
+        var layer_Rezerwatyprzyrody_6 = new L.geoJson(json_Rezerwatyprzyrody_6, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_RP_6',
-            layerName: 'layer_RP_6',
-            pane: 'pane_RP_6',
-            onEachFeature: pop_RP_6,
-            style: style_RP_6_0,
+            dataVar: 'json_Rezerwatyprzyrody_6',
+            layerName: 'layer_Rezerwatyprzyrody_6',
+            pane: 'pane_Rezerwatyprzyrody_6',
+            onEachFeature: pop_Rezerwatyprzyrody_6,
+            style: style_Rezerwatyprzyrody_6_0,
         });
-        bounds_group.addLayer(layer_RP_6);
-        map.addLayer(layer_RP_6);
+        bounds_group.addLayer(layer_Rezerwatyprzyrody_6);
+        map.addLayer(layer_Rezerwatyprzyrody_6);
         function pop_Parkikrajobrazowe_7(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -499,12 +500,12 @@
         var baseMaps = {};
         var overlaysTree = [
             {label: '<img src="legend/Parkikrajobrazowe_7.png" /> Parki krajobrazowe', layer: layer_Parkikrajobrazowe_7},
-            {label: '<img src="legend/RP_6.png" /> RP', layer: layer_RP_6},
-            {label: '<img src="legend/RP_otu_5.png" /> RP_otu', layer: layer_RP_otu_5},
+            {label: '<img src="legend/Rezerwatyprzyrody_6.png" /> Rezerwaty przyrody', layer: layer_Rezerwatyprzyrody_6},
+            {label: '<img src="legend/Otulinyrezerwatwprzyrody_5.png" /> Otuliny rezerwatów przyrody', layer: layer_Otulinyrezerwatwprzyrody_5},
             {label: '<img src="legend/Natura2000SOO_4.png" /> Natura 2000 (SOO)', layer: layer_Natura2000SOO_4},
             {label: '<img src="legend/LasyochronneOKZPKWM_3.png" /> Lasy ochronne (OK ZPKWM)', layer: layer_LasyochronneOKZPKWM_3},
-            {label: "Wydzielenia PGL LP", layer: layer_WydzieleniaPGLLP_2},
-            {label: "Wydzielenia poza PGL LP", layer: layer_WydzieleniapozaPGLLP_1},
+            {label: "WMS BDL Wydzielenia PGL LP", layer: layer_WMSBDLWydzieleniaPGLLP_2},
+            {label: "WMS BDL Wydzielenia poza PGL LP", layer: layer_WMSBDLWydzieleniapozaPGLLP_1},
             {label: "OSM Standard", layer: layer_OSMStandard_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
