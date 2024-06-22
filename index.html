@@ -11,9 +11,9 @@
         <link rel="stylesheet" href="css/qgis2web.css">
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
-		<link rel="stylesheet" href="css/Control.FullScreen.css" />
-		<link rel="stylesheet" href="css/Leaflet.GraphicScale.min.css" />
-		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="css/Control.FullScreen.css" />
+	<link rel="stylesheet" href="css/Leaflet.GraphicScale.min.css" />
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
  
  <style>
         html, body, #map {
@@ -40,8 +40,8 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet.wms.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
-		<script src="js/Control.FullScreen.js"></script>
-		<script src="js/Leaflet.GraphicScale.min.js"></script>
+	<script src="js/Control.FullScreen.js"></script>
+	<script src="js/Leaflet.GraphicScale.min.js"></script>
         <script src="data/LasyochronneOKZPKWM_3.js"></script>
         <script src="data/Natura2000SOO_4.js"></script>
         <script src="data/Otulinyrezerwatwprzyrody_5.js"></script>
@@ -502,16 +502,7 @@
             text: 'Search',
             title: 'Testing'
         }).addTo(map);	
-		var graphicScale = L.control.graphicScale({
-			fill: 'hollow',
-			doubleLine: false,
-			showSubunits: false, 
-			minUnitWidth: 30, 
-			maxUnitsWidth: 240, 
-			labelPlacement: 'auto', 
-			unitPlacement: 'label', 
-			position: 'bottomleft'
-		}).addTo(map);
+
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .className += ' fa fa-search';
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
