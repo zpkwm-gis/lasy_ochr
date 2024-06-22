@@ -11,10 +11,11 @@
         <link rel="stylesheet" href="css/qgis2web.css">
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
-	<link rel="stylesheet" href="css/Control.FullScreen.css" /> 
-	<link rel="stylesheet" href="css/Leaflet.GraphicScale.min.css" />    
-	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-        <style>
+		<link rel="stylesheet" href="css/Control.FullScreen.css" />
+		<link rel="stylesheet" href="css/Leaflet.GraphicScale.min.css" />
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+ 
+ <style>
         html, body, #map {
             width: 100%;
             height: 100%;
@@ -39,8 +40,8 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet.wms.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
-	<script src="js/Control.FullScreen.js"></script> 
-	<script src="js/Leaflet.GraphicScale.min.js"></script>    
+		<script src="js/Control.FullScreen.js"></script>
+		<script src="js/Leaflet.GraphicScale.min.js"></script>
         <script src="data/LasyochronneOKZPKWM_3.js"></script>
         <script src="data/Natura2000SOO_4.js"></script>
         <script src="data/Otulinyrezerwatwprzyrody_5.js"></script>
@@ -65,8 +66,8 @@
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
         }).fitBounds([[49.99147470000195,19.374694228872524],[50.269987404637,20.04196135548641]]);
-        var hash = new L.Hash(map);
-        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+       var hash = new L.Hash(map);
+       map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         // remove popup's row if "visible-with-data"
         function removeEmptyRowsFromPopupContent(content, feature) {
@@ -111,7 +112,6 @@
             this._div = L.DomUtil.create('div',
             'leaflet-control abstract');
             this._div.id = 'abstract'
-
                 abstract.show();
                 return this._div;
             };
@@ -120,16 +120,14 @@
                 this._div.classList.add("abstractUncollapsed");
                 this._div.innerHTML = 'Zespół Parków Krajobrazowych Województwa Małopolskiego';
         };
-        abstract.addTo(map);
-	
+        abstract.addTo(map);	
 		// create fullscreen control
-	var fsControl = L.control.fullscreen();
-	// add fullscreen control to the map
-	map.addControl(fsControl);	
-	
+		var fsControl = L.control.fullscreen();
+		// add fullscreen control to the map
+		map.addControl(fsControl);			
         var zoomControl = L.control.zoom({
             position: 'topleft'
-        }).addTo(map);
+        }).addTo(map);	
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
@@ -503,17 +501,17 @@
             position: 'topleft',
             text: 'Search',
             title: 'Testing'
-        }).addTo(map);
-	var graphicScale = L.control.graphicScale({
-	        fill: 'hollow',
-		doubleLine: false,
-		showSubunits: false, 
-		minUnitWidth: 30, 
-		maxUnitsWidth: 240, 
-		labelPlacement: 'auto', 
-		unitPlacement: 'label', 
-		position: 'bottomleft'
-		}).addTo(map);			
+        }).addTo(map);	
+		var graphicScale = L.control.graphicScale({
+			fill: 'hollow',
+			doubleLine: false,
+			showSubunits: false, 
+			minUnitWidth: 30, 
+			maxUnitsWidth: 240, 
+			labelPlacement: 'auto', 
+			unitPlacement: 'label', 
+			position: 'bottomleft'
+		}).addTo(map);
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .className += ' fa fa-search';
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
@@ -521,7 +519,7 @@
         var baseMaps = {};
         var overlaysTree = [
             {label: 'LEGENDA'},
-	    {label: '<img src="legend/Parkikrajobrazowe_7.png" /> Parki krajobrazowe', layer: layer_Parkikrajobrazowe_7},
+			{label: '<img src="legend/Parkikrajobrazowe_7.png" /> Parki krajobrazowe', layer: layer_Parkikrajobrazowe_7},
             {label: '<img src="legend/Rezerwatyprzyrody_6.png" /> Rezerwaty przyrody', layer: layer_Rezerwatyprzyrody_6},
             {label: '<img src="legend/Otulinyrezerwatwprzyrody_5.png" /> Otuliny rezerwatów przyrody', layer: layer_Otulinyrezerwatwprzyrody_5},
             {label: '<img src="legend/Natura2000SOO_4.png" /> Natura 2000 (SOO)', layer: layer_Natura2000SOO_4},
@@ -540,6 +538,7 @@
         });
         lay.addTo(map);
         setBounds();
+
         </script>
     </body>
 </html>
