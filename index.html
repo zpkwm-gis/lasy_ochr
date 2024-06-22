@@ -530,8 +530,21 @@
             collapsed: false, 
         });
         lay.addTo(map);
+		var graphicScale = L.control.graphicScale({
+			fill: 'hollow',
+			doubleLine: false,
+			showSubunits: false, 
+			minUnitWidth: 30, 
+			maxUnitsWidth: 240, 
+			labelPlacement: 'auto', 
+			unitPlacement: 'label', 
+			position: 'bottomleft'
+		}).addTo(map);
+
+		
         setBounds();
 
+		
         </script>
     </body>
 </html>
