@@ -81,7 +81,7 @@
             color: #444444 !important;
             box-shadow: 0 0 15px rgba(0,0,0,0.2);
             border-radius: 5px;
-            max-width: 40%;
+            max-width: 100%;
         }
         .leaflet-touch .leaflet-control-layers,
         .leaflet-touch .leaflet-bar,
