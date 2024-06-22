@@ -502,13 +502,20 @@
             text: 'Search',
             title: 'Testing'
         }).addTo(map);	
-
+	var graphicScale = L.control.graphicScale({
+		fill: 'hollow',
+		doubleLine: false,
+		showSubunits: false, 
+		minUnitWidth: 30, 
+		maxUnitsWidth: 240, 
+		labelPlacement: 'auto', 
+		unitPlacement: 'label', 
+		position: 'bottomleft'
+		}).addTo(map);
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .className += ' fa fa-search';
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
-
-
         var baseMaps = {};
         var overlaysTree = [
             {label: 'LEGENDA'},
