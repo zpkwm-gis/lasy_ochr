@@ -11,9 +11,10 @@
         <link rel="stylesheet" href="css/qgis2web.css">
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
-	<link rel="stylesheet" href="css/Control.FullScreen.css" />
-	<link rel="stylesheet" href="css/Leaflet.GraphicScale.min.css" />
-	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+		<link rel="stylesheet" href="css/Control.FullScreen.css" />
+		<link rel="stylesheet" href="css/Leaflet.GraphicScale.min.css" />
+		<link rel="stylesheet" href="css/Control.MiniMap.min.css" />
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
  
  <style>
         html, body, #map {
@@ -40,8 +41,9 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet.wms.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
-	<script src="js/Control.FullScreen.js"></script>
-	<script src="js/Leaflet.GraphicScale.min.js"></script>
+		<script src="js/Control.FullScreen.js"></script>
+		<script src="js/Leaflet.GraphicScale.min.js"></script>
+		<script src="js/Control.MiniMap.min.js"></script>
         <script src="data/LasyochronneOKZPKWM_3.js"></script>
         <script src="data/Natura2000SOO_4.js"></script>
         <script src="data/Otulinyrezerwatwprzyrody_5.js"></script>
@@ -67,7 +69,7 @@
             zoomControl:false, maxZoom:28, minZoom:1
         }).fitBounds([[49.99147470000195,19.374694228872524],[50.269987404637,20.04196135548641]]);
        var hash = new L.Hash(map);
-        map.attributionControl.setPrefix('<a href="https://qgis.org" target="_blank" >QGIS</a> &middot; <a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" target="_blank" >Leaflet</a> &middot; <a href="https://zpkwm.pl" title="Zespół Parków Krajobrazowych Województwa Małopolskiego" target="_blank" >© ZPKWM</a>');
+       map.attributionControl.setPrefix('<a href="https://qgis.org" target="_blank" >QGIS</a> &middot; <a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" target="_blank" >Leaflet</a> &middot; <a href="https://zpkwm.pl" title="Zespół Parków Krajobrazowych Województwa Małopolskiego" target="_blank" >© ZPKWM</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         // remove popup's row if "visible-with-data"
         function removeEmptyRowsFromPopupContent(content, feature) {
@@ -121,10 +123,12 @@
                 this._div.innerHTML = 'Zespół Parków Krajobrazowych Województwa Małopolskiego';
         };
         abstract.addTo(map);	
-		// create fullscreen control
+		
+		//Plugin Control.FullScreen (start)
 		var fsControl = L.control.fullscreen();
-		// add fullscreen control to the map
-		map.addControl(fsControl);			
+		map.addControl(fsControl);		
+		//Plugin Control.FullScreen (stop)		
+		
         var zoomControl = L.control.zoom({
             position: 'topleft'
         }).addTo(map);	
@@ -502,16 +506,27 @@
             text: 'Search',
             title: 'Testing'
         }).addTo(map);	
-	var graphicScale = L.control.graphicScale({
-		fill: 'hollow',
-		doubleLine: false,
-		showSubunits: false, 
-		minUnitWidth: 30, 
-		maxUnitsWidth: 240, 
-		labelPlacement: 'auto', 
-		unitPlacement: 'label', 
-		position: 'bottomleft'
+		
+		//Plugin graphicScale (start)
+		var graphicScale = L.control.graphicScale({
+			fill: 'hollow',
+			doubleLine: false,
+			showSubunits: false, 
+			minUnitWidth: 30, 
+			maxUnitsWidth: 240, 
+			labelPlacement: 'auto', 
+			unitPlacement: 'label', 
+			position: 'bottomleft'
 		}).addTo(map);
+		//Plugin graphicScale (stop)	
+		
+		//Plugin MiniMap (start)
+			var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+			var osmAttrib='Map data &copy; OpenStreetMap contributors';
+		    var OSMmini = new L.tileLayer(osmUrl, {minZoom: 0, maxZoom: 13, attribution: osmAttrib });
+      		var miniMap = new L.Control.MiniMap(OSMmini, { toggleDisplay: true, minimized: false}).addTo(map);
+		//Plugin MiniMap (stop)
+		
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .className += ' fa fa-search';
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
@@ -523,7 +538,7 @@
             {label: '<img src="legend/Rezerwatyprzyrody_6.png" /> Rezerwaty przyrody', layer: layer_Rezerwatyprzyrody_6},
             {label: '<img src="legend/Otulinyrezerwatwprzyrody_5.png" /> Otuliny rezerwatów przyrody', layer: layer_Otulinyrezerwatwprzyrody_5},
             {label: '<img src="legend/Natura2000SOO_4.png" /> Natura 2000 (SOO)', layer: layer_Natura2000SOO_4},
-            {label: '<img src="legend/LasyochronneOKZPKWM_3.png" /> Lasy ochronne (ZPKWM-OK)', layer: layer_LasyochronneOKZPKWM_3},
+            {label: '<img src="legend/LasyochronneOKZPKWM_3.png" /> Lasy ochronne (OK ZPKWM)', layer: layer_LasyochronneOKZPKWM_3},
             {label: "WMS BDL Wydzielenia PGL LP", layer: layer_WMSBDLWydzieleniaPGLLP_2},
             {label: "WMS BDL Wydzielenia poza PGL LP", layer: layer_WMSBDLWydzieleniapozaPGLLP_1},
             {label: "OSM Standard", layer: layer_OSMStandard_0},]
@@ -537,10 +552,8 @@
             collapsed: false, 
         });
         lay.addTo(map);
-
         setBounds();
 
-		
         </script>
     </body>
 </html>
