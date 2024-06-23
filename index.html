@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="css/Control.FullScreen.css" />
 		<link rel="stylesheet" href="css/Leaflet.GraphicScale.min.css" />
 		<link rel="stylesheet" href="css/Control.MiniMap.min.css" />
+		<link rel="stylesheet" href="css/Leaflet.NavBar.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
  
  <style>
@@ -44,6 +45,7 @@
 		<script src="js/Control.FullScreen.js"></script>
 		<script src="js/Leaflet.GraphicScale.min.js"></script>
 		<script src="js/Control.MiniMap.min.js"></script>
+		<script src="js/Leaflet.NavBar.js"></script>
         <script src="data/LasyochronneOKZPKWM_3.js"></script>
         <script src="data/Natura2000SOO_4.js"></script>
         <script src="data/Otulinyrezerwatwprzyrody_5.js"></script>
@@ -125,12 +127,19 @@
         abstract.addTo(map);	
 		
 		//Plugin Control.FullScreen (start)
-		var fsControl = L.control.fullscreen();
+		var fsControl = L.control.fullscreen({
+            position: 'topright'});
 		map.addControl(fsControl);		
-		//Plugin Control.FullScreen (stop)		
-		
+		//Plugin Control.FullScreen (stop)	
+
+		//Plugin Navbar (start)		
+	    L.control.navbar({
+            position: 'topright'
+        }).addTo(map);	
+		//Plugin Navbar (stop)			
+	 
         var zoomControl = L.control.zoom({
-            position: 'topleft'
+            position: 'topright'
         }).addTo(map);	
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
@@ -516,7 +525,7 @@
 			maxUnitsWidth: 240, 
 			labelPlacement: 'auto', 
 			unitPlacement: 'label', 
-			position: 'bottomleft'
+			position: 'bottomright'
 		}).addTo(map);
 		//Plugin graphicScale (stop)	
 		
@@ -524,13 +533,14 @@
 			var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 			var osmAttrib='Map data &copy; OpenStreetMap contributors';
 		    var OSMmini = new L.tileLayer(osmUrl, {minZoom: 0, maxZoom: 13, attribution: osmAttrib });
-      		var miniMap = new L.Control.MiniMap(OSMmini, { toggleDisplay: true, minimized: false}).addTo(map);
+      		var miniMap = new L.Control.MiniMap(OSMmini, { toggleDisplay: true, minimized: false, width: 242, height: 150, position: 'bottomleft'}).addTo(map);
 		//Plugin MiniMap (stop)
 		
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .className += ' fa fa-search';
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
+		
         var baseMaps = {};
         var overlaysTree = [
             {label: 'LEGENDA'},
@@ -538,7 +548,7 @@
             {label: '<img src="legend/Rezerwatyprzyrody_6.png" /> Rezerwaty przyrody', layer: layer_Rezerwatyprzyrody_6},
             {label: '<img src="legend/Otulinyrezerwatwprzyrody_5.png" /> Otuliny rezerwatów przyrody', layer: layer_Otulinyrezerwatwprzyrody_5},
             {label: '<img src="legend/Natura2000SOO_4.png" /> Natura 2000 (SOO)', layer: layer_Natura2000SOO_4},
-            {label: '<img src="legend/LasyochronneOKZPKWM_3.png" /> Lasy ochronne (OK ZPKWM)', layer: layer_LasyochronneOKZPKWM_3},
+            {label: '<img src="legend/LasyochronneOKZPKWM_3.png" /> Lasy ochronne (ZPKWM-OK)', layer: layer_LasyochronneOKZPKWM_3},
             {label: "WMS BDL Wydzielenia PGL LP", layer: layer_WMSBDLWydzieleniaPGLLP_2},
             {label: "WMS BDL Wydzielenia poza PGL LP", layer: layer_WMSBDLWydzieleniapozaPGLLP_1},
             {label: "OSM Standard", layer: layer_OSMStandard_0},]
@@ -550,6 +560,7 @@
             //collapseAll: 'Collapse all',
             //expandAll: 'Expand all',
             collapsed: false, 
+		    position: 'topleft',
         });
         lay.addTo(map);
         setBounds();
