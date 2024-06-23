@@ -511,7 +511,7 @@
         map.addLayer(layer_Parkikrajobrazowe_7);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
-            position: 'topleft',
+            position: 'topright',
             text: 'Search',
             title: 'Testing'
         }).addTo(map);	
@@ -544,7 +544,7 @@
         var baseMaps = {};
         var overlaysTree = [
             {label: 'LEGENDA'},
-			{label: '<img src="legend/Parkikrajobrazowe_7.png" /> Parki krajobrazowe', layer: layer_Parkikrajobrazowe_7},
+	    {label: '<img src="legend/Parkikrajobrazowe_7.png" /> Parki krajobrazowe', layer: layer_Parkikrajobrazowe_7},
             {label: '<img src="legend/Rezerwatyprzyrody_6.png" /> Rezerwaty przyrody', layer: layer_Rezerwatyprzyrody_6},
             {label: '<img src="legend/Otulinyrezerwatwprzyrody_5.png" /> Otuliny rezerwatów przyrody', layer: layer_Otulinyrezerwatwprzyrody_5},
             {label: '<img src="legend/Natura2000SOO_4.png" /> Natura 2000 (SOO)', layer: layer_Natura2000SOO_4},
@@ -560,7 +560,7 @@
             //collapseAll: 'Collapse all',
             //expandAll: 'Expand all',
             collapsed: false, 
-		    position: 'topleft',
+	    position: 'bottomleft',
         });
         lay.addTo(map);
         setBounds();
