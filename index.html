@@ -530,10 +530,10 @@
 		//Plugin graphicScale (stop)	
 		
 		//Plugin MiniMap (start)
-			var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-			var osmAttrib='Map data &copy; OpenStreetMap contributors';
-		    var OSMmini = new L.tileLayer(osmUrl, {minZoom: 0, maxZoom: 13, attribution: osmAttrib });
-      		var miniMap = new L.Control.MiniMap(OSMmini, { toggleDisplay: true, minimized: false, width: 242, height: 150, position: 'bottomleft'}).addTo(map);
+		var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+		var osmAttrib='Map data &copy; OpenStreetMap contributors';
+		var OSMmini = new L.tileLayer(osmUrl, {minZoom: 0, maxZoom: 13, attribution: osmAttrib });
+      		var miniMap = new L.Control.MiniMap(OSMmini, { toggleDisplay: true, minimized: false, width: 262, height: 150, position: 'bottomleft'}).addTo(map);
 		//Plugin MiniMap (stop)
 		
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
@@ -543,7 +543,7 @@
 		
         var baseMaps = {};
         var overlaysTree = [
-            {label: 'LEGENDA'},
+            {label: '<b>LEGENDA</b>', selectAllCheckbox: false, children: [
 	    {label: '<img src="legend/Parkikrajobrazowe_7.png" /> Parki krajobrazowe', layer: layer_Parkikrajobrazowe_7},
             {label: '<img src="legend/Rezerwatyprzyrody_6.png" /> Rezerwaty przyrody', layer: layer_Rezerwatyprzyrody_6},
             {label: '<img src="legend/Otulinyrezerwatwprzyrody_5.png" /> Otuliny rezerwatów przyrody', layer: layer_Otulinyrezerwatwprzyrody_5},
@@ -551,7 +551,7 @@
             {label: '<img src="legend/LasyochronneOKZPKWM_3.png" /> Lasy ochronne (ZPKWM-OK)', layer: layer_LasyochronneOKZPKWM_3},
             {label: "WMS BDL Wydzielenia PGL LP", layer: layer_WMSBDLWydzieleniaPGLLP_2},
             {label: "WMS BDL Wydzielenia poza PGL LP", layer: layer_WMSBDLWydzieleniapozaPGLLP_1},
-            {label: "OSM Standard", layer: layer_OSMStandard_0},]
+            {label: "OSM Standard", layer: layer_OSMStandard_0},]},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
             //selectorBack: false,
