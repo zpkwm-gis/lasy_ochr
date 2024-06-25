@@ -98,7 +98,7 @@
 		//Plugin Contextmenu (stop1)		
 		
         zoomControl:false, maxZoom:28, minZoom:1
-        }).		fitBounds([[49.99147470000195,19.374694228872524],[50.269987404637,20.04196135548641]]);
+        }).		fitBounds([[49.69987516880163,19.34916587663455],[50.48032290158253,21.20533178845071]]);
 		
 		//Plugin Contextmenu (start2)			
      function showCoordinates (e) {
@@ -272,8 +272,19 @@
                         <td>' + (feature.properties['PARK'] !== null ? autolinker.link(feature.properties['PARK'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
+                        <td colspan="2">' + (feature.properties['a_i_num'] !== null ? autolinker.link(feature.properties['a_i_num'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <th scope="row">adr_for</th>\
                         <td>' + (feature.properties['adr_for'] !== null ? autolinker.link(feature.properties['adr_for'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">sub_area</th>\
+                        <td>' + (feature.properties['sub_area'] !== null ? autolinker.link(feature.properties['sub_area'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LASY POZA PGLP</th>\
+                        <td class="visible-with-data" id="LASY POZA PGLP">' + (feature.properties['LASY POZA PGLP'] !== null ? autolinker.link(feature.properties['LASY POZA PGLP'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -592,7 +603,7 @@
             {label: '<img src="legend/Rezerwatyprzyrody_6.png" /> Rezerwaty przyrody', layer: layer_Rezerwatyprzyrody_6},
             {label: '<img src="legend/Otulinyrezerwatwprzyrody_5.png" /> Otuliny rezerwatów przyrody', layer: layer_Otulinyrezerwatwprzyrody_5},
             {label: '<img src="legend/Natura2000SOO_4.png" /> Natura 2000 (SOO)', layer: layer_Natura2000SOO_4},
-            {label: '<img src="legend/LasyochronneOKZPKWM_3.png" /> Lasy ochronne (ZPKWM-OK)', layer: layer_LasyochronneOKZPKWM_3},
+            {label: '<img src="legend/LasyochronneOKZPKWM_3.png" /> Lasy przyr.-społ. (ZPKWM)', layer: layer_LasyochronneOKZPKWM_3},
             {label: "WMS BDL Wydzielenia PGL LP", layer: layer_WMSBDLWydzieleniaPGLLP_2},
             {label: "WMS BDL Wydzielenia poza PGL LP", layer: layer_WMSBDLWydzieleniapozaPGLLP_1},
             {label: "OSM Standard", layer: layer_OSMStandard_0},]},]
