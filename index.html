@@ -16,6 +16,7 @@
 		<link rel="stylesheet" href="css/Control.MiniMap.min.css" />
 		<link rel="stylesheet" href="css/Leaflet.NavBar.css" />
 		<link rel="stylesheet" href="css/leaflet.contextmenu.css"/>
+		<link rel="stylesheet" href="css/leaflet-control-boxzoom.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
  
  <style>
@@ -49,7 +50,8 @@
 		<script src="js/Control.MiniMap.min.js"></script>
 		<script src="js/Leaflet.NavBar.js"></script>
 		<script src="js/leaflet.contextmenu.js"></script>
-        <script src="data/LasyochronneOKZPKWM_3.js"></script>
+        <script src="js/leaflet-control-boxzoom.js"></script>
+		<script src="data/LasyochronneOKZPKWM_3.js"></script>
         <script src="data/Natura2000SOO_4.js"></script>
         <script src="data/Otulinyrezerwatwprzyrody_5.js"></script>
         <script src="data/Rezerwatyprzyrody_6.js"></script>
@@ -182,6 +184,12 @@
             position: 'topright'
         }).addTo(map);	
 		//Plugin Navbar (stop)		
+		
+		//Plugin Control.boxzoom (start)	
+		 L.Control.boxzoom({
+            position:'topright',
+        }).addTo(map);
+		//Plugin Control.boxzoom (stop)
 
         var zoomControl = L.control.zoom({
             position: 'topright'
@@ -619,8 +627,6 @@
         });
         lay.addTo(map);
 		
-
-
         </script>
     </body>
 </html>
