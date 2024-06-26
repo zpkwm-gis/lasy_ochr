@@ -25,7 +25,7 @@
             padding: 0;
             margin: 0;
 			cursor: url(css/images/cursor.cur), pointer;
-        }
+        }					
         </style>
         <title>Propozycja wyznaczenia lasów  o funkcji przyrodniczej i społecznej</title>
     </head>
@@ -50,6 +50,7 @@
 		<script src="js/Leaflet.NavBar.js"></script>
 		<script src="js/leaflet.contextmenu.js"></script>
         <script src="js/leaflet-control-boxzoom.js"></script>
+		<script src="js/leaflet.browser.print.js"></script>
 		<script src="js/leaflet-control-condended-attribution.js"></script>
         <script src="data/lasy_przyr_spol_ZPKWM_OWK_2_3.js"></script>
         <script src="data/lasy_przyr_spol_ZPKWM_OWK_1_4.js"></script>
@@ -871,6 +872,30 @@
         });
         bounds_group.addLayer(layer_Parkikrajobrazowe_10);
         map.addLayer(layer_Parkikrajobrazowe_10);
+				
+		//Plugin browserPrint (start)
+	var browserPrint = L.browserPrint(map,{debug:false, cancelWithEsc: true});
+    var c = L.control.browserPrint({
+		position: 'topright',
+		title: 'Drukowanie widoku mapy',		
+        printModes: [
+            L.BrowserPrint.Mode.Landscape('A4',{margin: 0, 
+			header: {
+                enabled: true,
+                text: "<span>Propozycja wyznaczenia lasów o funkcji przyrodniczej i społecznej</span>",
+                size: "10mm",
+                overTheMap: false,
+            },
+            footer: {
+                enabled: true,
+                text: "<span>Zespół Parków Krajobrazowych Województwa Małopolskiego</span>",
+                size: "10mm",
+                overTheMap: false,
+            }
+        }) ]
+    }, browserPrint).addTo(map);
+		//Plugin browserPrint (stop)
+			
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topright',
@@ -897,11 +922,12 @@
 		    var OSMmini = new L.tileLayer(osmUrl, {minZoom: 0, maxZoom: 13, attribution: osmAttrib });
       		var miniMap = new L.Control.MiniMap(OSMmini, { toggleDisplay: true, minimized: false, width: 262, height: 150, position: 'bottomleft'}).addTo(map);
 		//Plugin MiniMap (stop)
-			
+		
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .className += ' fa fa-search';
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
-        .title += 'Search for a place';
+        .title += 'Wyszukiwanie miejsc';
+					
         var baseMaps = {};
         var overlaysTree = [
         {label: '<b>LEGENDA</b>', selectAllCheckbox: false, children: [
