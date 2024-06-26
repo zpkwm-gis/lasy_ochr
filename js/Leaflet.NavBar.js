@@ -9,9 +9,9 @@
       //center:,
       //zoom :,
       //bbox:, //Alternative to center/zoom for home button, takes precedence if included
-      forwardTitle: 'Go forward in map view history',
-      backTitle: 'Go back in map view history',
-      homeTitle: 'Go to home map view'
+      forwardTitle: 'Następny widok',
+      backTitle: 'Poprzedni widok',
+      homeTitle: 'Widok początkowy'
     },
 
     onAdd: function(map) {
