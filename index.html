@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,12 +11,20 @@
         <link rel="stylesheet" href="css/qgis2web.css">
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+		<link rel="stylesheet" href="css/Control.FullScreen.css" />
+		<link rel="stylesheet" href="css/Leaflet.GraphicScale.min.css" />
+		<link rel="stylesheet" href="css/Control.MiniMap.min.css" />
+		<link rel="stylesheet" href="css/Leaflet.NavBar.css" />
+		<link rel="stylesheet" href="css/leaflet.contextmenu.css"/>
+		<link rel="stylesheet" href="css/leaflet-control-boxzoom.css" />
+		<link rel="stylesheet" href="css/leaflet-control-condended-attribution.css" />
         <style>
         html, body, #map {
             width: 100%;
             height: 100%;
             padding: 0;
             margin: 0;
+			cursor: url(css/images/cursor.cur), pointer;
         }
         </style>
         <title>Propozycja wyznaczenia lasów  o funkcji przyrodniczej i społecznej</title>
@@ -36,6 +44,13 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet.wms.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+		<script src="js/Control.FullScreen.js"></script>
+		<script src="js/Leaflet.GraphicScale.min.js"></script>
+		<script src="js/Control.MiniMap.min.js"></script>
+		<script src="js/Leaflet.NavBar.js"></script>
+		<script src="js/leaflet.contextmenu.js"></script>
+        <script src="js/leaflet-control-boxzoom.js"></script>
+		<script src="js/leaflet-control-condended-attribution.js"></script>
         <script src="data/lasy_przyr_spol_ZPKWM_OWK_2_3.js"></script>
         <script src="data/lasy_przyr_spol_ZPKWM_OWK_1_4.js"></script>
         <script src="data/lasy_przyr_spol_ZPKWM_OT_5.js"></script>
@@ -61,10 +76,52 @@
             }
         }
         var map = L.map('map', {
+		
+		//Plugin Contextmenu (start1)		
+		contextmenu: true,
+		contextmenuItems: [{
+		      text: '  ',			  
+	      }, '-',{
+		      text: 'Współrzędne',
+			  icon: 'css/images/coords.png',
+		      callback: showCoordinates
+	      }, '-', {
+		      text: 'Powiększ',
+		      icon: 'css/images/zoom-in.png',
+		      callback: zoomIn
+	      },{
+			  text: 'Pomniejsz',
+		      icon: 'css/images/zoom-out.png',
+		      callback: zoomOut
+	      }, {
+		      text: 'Wycentruj',
+			  icon: 'css/images/center.png',
+		      callback: centerMap	  
+          }, '-', {
+		      text: '  ',		  	  
+	  }],
+		//Plugin Contextmenu (stop1)		
+			
             zoomControl:false, maxZoom:28, minZoom:1
         }).fitBounds([[49.251406345401584,18.879218561661514],[50.48032093650796,21.790486890586166]]);
+		
+		//Plugin Contextmenu (start2)			
+     function showCoordinates (e) {
+	      alert(e.latlng);
+      }
+      function centerMap (e) {
+	      map.panTo(e.latlng);
+      }
+      function zoomIn (e) {
+	      map.zoomIn();
+      }
+      function zoomOut (e) {
+	      map.zoomOut();
+      }
+		//Plugin Contextmenu (stop2)
+		
         var hash = new L.Hash(map);
-        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+		map.attributionControl.setPrefix('<a href="https://qgis.org" target="_blank" >QGIS</a> &middot; <a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" target="_blank" >Leaflet</a> &middot; <a href="https://zpkwm.pl" title="Zespół Parków Krajobrazowych Województwa Małopolskiego" target="_blank" >© ZPKWM</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         // remove popup's row if "visible-with-data"
         function removeEmptyRowsFromPopupContent(content, feature) {
@@ -101,7 +158,7 @@
             return this._div;
         };
         title.update = function () {
-            this._div.innerHTML = '<h2>Propozycja wyznaczenia lasów  o funkcji przyrodniczej i społecznej</h2>';
+           this._div.innerHTML = '<h2 style="color:olive";>Propozycja wyznaczenia lasów o funkcji przyrodniczej i społecznej</h2>';
         };
         title.addTo(map);
         var abstract = new L.Control({'position':'topleft'});
@@ -116,11 +173,30 @@
             abstract.show = function () {
                 this._div.classList.remove("abstract");
                 this._div.classList.add("abstractUncollapsed");
-                this._div.innerHTML = 'Zespół Parków Krajobrazowych Województwa Małopolskiego';
+                this._div.innerHTML = '<img src="images/Logo.png" width="15" height="9" /> Zespół Parków Krajobrazowych Województwa Małopolskiego';
         };
         abstract.addTo(map);
+		
+		//Plugin Control.FullScreen (start)
+		var fsControl = L.control.fullscreen({
+            position: 'topright'});
+		map.addControl(fsControl);		
+		//Plugin Control.FullScreen (stop)	
+
+		//Plugin Navbar (start)		
+	    L.control.navbar({
+            position: 'topright'
+        }).addTo(map);	
+		//Plugin Navbar (stop)		
+		
+		//Plugin Control.boxzoom (start)	
+		 L.Control.boxzoom({
+            position:'topright',
+        }).addTo(map);
+		//Plugin Control.boxzoom (stop)
+			
         var zoomControl = L.control.zoom({
-            position: 'topleft'
+            position: 'topright'
         }).addTo(map);
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
@@ -130,7 +206,7 @@
         var layer_OSMStandard_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             pane: 'pane_OSMStandard_0',
             opacity: 1.0,
-            attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
+            attribution: '<a href="https://www.openstreetmap.org/copyright" target="_blank" >Mapa bazowa: © OpenStreetMap contributors, CC-BY-SA</a>',
             minZoom: 1,
             maxZoom: 28,
             minNativeZoom: 0,
@@ -801,13 +877,34 @@
             text: 'Search',
             title: 'Testing'
         }).addTo(map);
+		
+		//Plugin graphicScale (start)
+		var graphicScale = L.control.graphicScale({
+			fill: 'hollow',
+			doubleLine: false,
+			showSubunits: false, 
+			minUnitWidth: 30, 
+			maxUnitsWidth: 240, 
+			labelPlacement: 'auto', 
+			unitPlacement: 'label', 
+			position: 'bottomright'
+		}).addTo(map);
+		//Plugin graphicScale (stop)	
+		
+		//Plugin MiniMap (start)
+			var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+			var osmAttrib='Map data &copy; OpenStreetMap contributors';
+		    var OSMmini = new L.tileLayer(osmUrl, {minZoom: 0, maxZoom: 13, attribution: osmAttrib });
+      		var miniMap = new L.Control.MiniMap(OSMmini, { toggleDisplay: true, minimized: false, width: 262, height: 150, position: 'bottomleft'}).addTo(map);
+		//Plugin MiniMap (stop)
+			
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .className += ' fa fa-search';
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
         var overlaysTree = [
-        {label: '<b>LEGENDA</b>', selectAllCheckbox: true, children: [
+        {label: '<b>LEGENDA</b>', selectAllCheckbox: false, children: [
             {label: '<img src="legend/Parkikrajobrazowe_10.png" /> Parki krajobrazowe', layer: layer_Parkikrajobrazowe_10},
             {label: '<img src="legend/Rezerwatyprzyrody_9.png" /> Rezerwaty przyrody', layer: layer_Rezerwatyprzyrody_9},
             {label: '<img src="legend/Otulinyrezerwatwprzyrody_8.png" /> Otuliny rezerwatów przyrody', layer: layer_Otulinyrezerwatwprzyrody_8},
@@ -827,6 +924,7 @@
             //collapseAll: 'Collapse all',
             //expandAll: 'Expand all',
             collapsed: false, 
+		    position: 'bottomleft',			
         });
         lay.addTo(map);
         setBounds();
