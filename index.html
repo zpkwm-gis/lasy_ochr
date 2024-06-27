@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="css/Leaflet.NavBar.css" />
 		<link rel="stylesheet" href="css/leaflet.contextmenu.css"/>
 		<link rel="stylesheet" href="css/leaflet-control-boxzoom.css" />
-		<link rel="stylesheet" href="css/leaflet-control-condended-attribution.css" />
+		<link rel="stylesheet" href="css/leaflet-control-condensed-attribution.css" />
         <style>
         html, body, #map {
             width: 100%;
@@ -51,7 +51,7 @@
 		<script src="js/leaflet.contextmenu.js"></script>
         <script src="js/leaflet-control-boxzoom.js"></script>
 		<script src="js/leaflet.browser.print.min.js"></script>
-		<script src="js/leaflet-control-condended-attribution.js"></script>
+		<script src="js/leaflet-control-condensed-attribution.js"></script>		
         <script src="data/lasy_przyr_spol_ZPKWM_OWK_2_3.js"></script>
         <script src="data/lasy_przyr_spol_ZPKWM_OWK_1_4.js"></script>
         <script src="data/lasy_przyr_spol_ZPKWM_OT_5.js"></script>
@@ -78,6 +78,10 @@
         }
         var map = L.map('map', {
 		
+		//Plugin condensedAttributionControl (start1)		
+   	    condensedAttributionControl: false,
+		//Plugin condensedAttributionControl (stop1)	
+	
 		//Plugin Contextmenu (start1)		
 		contextmenu: true,
 		contextmenuItems: [{
@@ -101,10 +105,10 @@
           }, '-', {
 		      text: '  ',		  	  
 	  }],
-		//Plugin Contextmenu (stop1)		
-			
+		//Plugin Contextmenu (stop1)	
+				
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[49.251406345401584,18.879218561661514],[50.48032093650796,21.790486890586166]]);
+        }).fitBounds([[49.251406345401584,18.879218561661514],[50.48032093650796,21.790486890586166]]); 
 		
 		//Plugin Contextmenu (start2)			
      function showCoordinates (e) {
@@ -122,8 +126,9 @@
 		//Plugin Contextmenu (stop2)
 		
         var hash = new L.Hash(map);
-		map.attributionControl.setPrefix('<a href="https://qgis.org" target="_blank" >QGIS</a> &middot; <a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" target="_blank" >Leaflet</a> &middot; <a href="https://zpkwm.pl" title="Zespół Parków Krajobrazowych Województwa Małopolskiego" target="_blank" >© ZPKWM</a>');
-        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+//		map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+ 
+ var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         // remove popup's row if "visible-with-data"
         function removeEmptyRowsFromPopupContent(content, feature) {
          var tempDiv = document.createElement('div');
@@ -195,10 +200,11 @@
             position:'topright',
         }).addTo(map);
 		//Plugin Control.boxzoom (stop)
-			
+						
         var zoomControl = L.control.zoom({
             position: 'topright'
         }).addTo(map);
+			
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
@@ -207,7 +213,7 @@
         var layer_OSMStandard_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             pane: 'pane_OSMStandard_0',
             opacity: 1.0,
-            attribution: '<a href="https://www.openstreetmap.org/copyright" target="_blank" >Mapa bazowa: © OpenStreetMap contributors, CC-BY-SA</a>',
+            attribution: '<a href="https://www.openstreetmap.org" target="_blank" >OpenStreetMap</a> contributors',
             minZoom: 1,
             maxZoom: 28,
             minNativeZoom: 0,
@@ -227,7 +233,7 @@
             info_format: 'text/html',
             opacity: 1,
             identify: false,
-            attribution: '',
+            attribution:'<a href="https://www.bdl.lasy.gov.pl" target="_blank" >Bank Danych o Lasach</a>',
         });
         map.createPane('pane_WydzieleniaPGLLP_2');
         map.getPane('pane_WydzieleniaPGLLP_2').style.zIndex = 402;
@@ -241,7 +247,7 @@
             info_format: 'text/html',
             opacity: 1,
             identify: false,
-            attribution: '',
+            attribution: '<a href="https://www.bdl.lasy.gov.pl" target="_blank" >Bank Danych o Lasach</a>',
         });
         map.addLayer(layer_WydzieleniaPGLLP_2);
         function pop_lasy_przyr_spol_ZPKWM_OWK_2_3(feature, layer) {
@@ -902,7 +908,7 @@
             text: 'Search',
             title: 'Testing'
         }).addTo(map);
-		
+					
 		//Plugin graphicScale (start)
 		var graphicScale = L.control.graphicScale({
 			fill: 'hollow',
@@ -915,19 +921,26 @@
 			position: 'bottomright'
 		}).addTo(map);
 		//Plugin graphicScale (stop)	
-		
+					
 		//Plugin MiniMap (start)
 			var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 			var osmAttrib='Map data &copy; OpenStreetMap contributors';
 		    var OSMmini = new L.tileLayer(osmUrl, {minZoom: 0, maxZoom: 13, attribution: osmAttrib });
-      		var miniMap = new L.Control.MiniMap(OSMmini, { toggleDisplay: true, minimized: false, width: 262, height: 150, position: 'bottomleft'}).addTo(map);
+      		var miniMap = new L.Control.MiniMap(OSMmini, {toggleDisplay: true, minimized: false, width: 262, height: 150, position: 'bottomleft'}).addTo(map);
 		//Plugin MiniMap (stop)
 		
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .className += ' fa fa-search';
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Wyszukiwanie miejsc';
-					
+	
+		//Plugin condensedAttributionControl (start2)	
+    L.control.condensedAttribution({
+      emblem: '<div class="emblem-wrap"><h2>©</h2></div>',
+      prefix: 'Credits: <a href="https://qgis.org" target="_blank" >QGIS</a>, <a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>, <a href="https://leafletjs.com" target="_blank" >Leaflet</a> &middot; Copyrights: <a href="https://zpkwm.pl" title="Zespół Parków Krajobrazowych Województwa Małopolskiego" target="_blank" >ZPKWM</a>'
+    }).addTo(map);
+		//Plugin condensedAttributionControl (stop2)	
+
         var baseMaps = {};
         var overlaysTree = [
         {label: '<b>LEGENDA</b>', selectAllCheckbox: false, children: [
@@ -952,7 +965,7 @@
             collapsed: false, 
 		    position: 'bottomleft',			
         });
-        lay.addTo(map);
+        lay.addTo(map);	
         setBounds();
         </script>
     </body>
