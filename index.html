@@ -933,7 +933,7 @@
 			var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 			var osmAttrib='Map data &copy; OpenStreetMap contributors';
 		    var OSMmini = new L.tileLayer(osmUrl, {minZoom: 0, maxZoom: 13, attribution: osmAttrib });
-      		var miniMap = new L.Control.MiniMap(OSMmini, {toggleDisplay: true, minimized: false, width: 262, height: 150, position: 'bottomleft'}).addTo(map);
+      		var miniMap = new L.Control.MiniMap(OSMmini, {toggleDisplay: true, minimized: false, width: 292, height: 150, position: 'bottomleft'}).addTo(map);
 		//Plugin MiniMap (stop)
 		
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
