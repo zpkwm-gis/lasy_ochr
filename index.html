@@ -25,7 +25,27 @@
             padding: 0;
             margin: 0;
 			cursor: url(css/images/cursor.cur), pointer;
-        }					
+        }	
+
+		input[type='checkbox']:checked {
+		background-color: rgb(143,143,143,1.0);
+		}
+		input[type='checkbox']:checked:after {
+		content: ' ';
+		color:white;
+		}
+		input[type='checkbox']{
+		text-align: center;
+		vertical-align: top;
+		width: 15px !important;
+		height: 15px !important;
+		appearance:none;
+		border-radius:10%;
+		border: 1px solid rgb(143,143,143,1.0);
+		box-shadow: none;
+		font-size: 1em;
+		}
+		
         </style>
         <title>Propozycja wyznaczenia lasów  o funkcji przyrodniczej i społecznej</title>
     </head>
@@ -935,12 +955,12 @@
             {label: '<img src="legend/Rezerwatyprzyrody_9.png" /> Rezerwaty przyrody', layer: layer_Rezerwatyprzyrody_9},
             {label: '<img src="legend/Otulinyrezerwatwprzyrody_8.png" /> Otuliny rezerwatów przyrody', layer: layer_Otulinyrezerwatwprzyrody_8},
             {label: '<img src="legend/Natura2000SOO_7.png" /> Natura 2000 (SOO)', layer: layer_Natura2000SOO_7},
-            {label: '<img src="legend/lasy_przyr_spol_ZPKWM_OK_6.png" /> lasy_przyr_spol_ZPKWM_OK', layer: layer_lasy_przyr_spol_ZPKWM_OK_6},
-            {label: '<img src="legend/lasy_przyr_spol_ZPKWM_OT_5.png" /> lasy_przyr_spol_ZPKWM_OT', layer: layer_lasy_przyr_spol_ZPKWM_OT_5},
-            {label: '<img src="legend/lasy_przyr_spol_ZPKWM_OWK_1_4.png" /> lasy_przyr_spol_ZPKWM_OWK_1', layer: layer_lasy_przyr_spol_ZPKWM_OWK_1_4},
-            {label: '<img src="legend/lasy_przyr_spol_ZPKWM_OWK_2_3.png" /> lasy_przyr_spol_ZPKWM_OWK_2', layer: layer_lasy_przyr_spol_ZPKWM_OWK_2_3},
-            {label: "Wydzielenia PGL LP", layer: layer_WydzieleniaPGLLP_2},
-            {label: "Wydzielenia poza PGL LP", layer: layer_WydzieleniapozaPGLLP_1},
+            {label: '<img src="legend/lasy_przyr_spol_ZPKWM_OK_6.png" /> Lasy przyr.-społ. ZPKWM-OK', layer: layer_lasy_przyr_spol_ZPKWM_OK_6},
+            {label: '<img src="legend/lasy_przyr_spol_ZPKWM_OT_5.png" /> Lasy przyr.-społ. ZPKWM-OT', layer: layer_lasy_przyr_spol_ZPKWM_OT_5},
+            {label: '<img src="legend/lasy_przyr_spol_ZPKWM_OWK_1_4.png" /> Lasy przyr.-społ. ZPKWM-OWK PPK', layer: layer_lasy_przyr_spol_ZPKWM_OWK_1_4},
+            {label: '<img src="legend/lasy_przyr_spol_ZPKWM_OWK_2_3.png" /> Lasy przyr.-społ. ZPKWM-OWK PKBM', layer: layer_lasy_przyr_spol_ZPKWM_OWK_2_3},
+            {label: "WMS BDL Wydzielenia PGL LP", layer: layer_WydzieleniaPGLLP_2},
+            {label: "WMS Wydzielenia poza PGL LP", layer: layer_WydzieleniapozaPGLLP_1},
             {label: "OSM Standard", layer: layer_OSMStandard_0},]},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
